@@ -43,6 +43,7 @@ const SignIn = ({ navigation }) => {
           label="Email"
           keyboardType="email-address"
           autoCompleteType="email"
+          value={email}
           onChange={(value) => {
             // validate email
             utils.validateEmail(value, setEmailError);
@@ -76,6 +77,7 @@ const SignIn = ({ navigation }) => {
           label="Password"
           secureTextEntry={!showPass}
           autoCompleteType="password"
+          value={password}
           containerStyle={{
             marginTop: SIZES.radius,
           }}
@@ -126,16 +128,16 @@ const SignIn = ({ navigation }) => {
         {/* sign in */}
         <TextButton
           label="Sign In"
-          // disabled={isEnableSignIn() ? false : true}
+          disabled={isEnableSignIn() ? false : true}
           buttonContainerStyle={{
             height: 55,
             alignItems: "center",
             marginTop: SIZES.padding,
             borderRadius: SIZES.radius,
-            // backgroundColor: isEnableSignIn()
-            //   ? COLORS.primary
-            //   : COLORS.transparentPrimary,
-            backgroundColor: COLORS.primary
+            backgroundColor: isEnableSignIn()
+              ? COLORS.primary
+              : COLORS.transparentPrimary,
+            
           }}
           onPress={() => navigation.replace("Home")}
         />

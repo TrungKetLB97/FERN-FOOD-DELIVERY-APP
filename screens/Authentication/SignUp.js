@@ -47,6 +47,7 @@ const SignUp = ({ navigation }) => {
           label="Email"
           keyboardType="email-address"
           autoCompleteType="email"
+          value={email}
           onChange={(value) => {
             // validate email
             utils.validateEmail(value, setEmailError);
@@ -84,6 +85,7 @@ const SignUp = ({ navigation }) => {
           onChange={(value) => {
             setUsername(value);
           }}
+          value={username}
           errorMsg={usernameError}
           appendComponent={
             <View style={{ justifyContent: "center" }}>
@@ -112,6 +114,7 @@ const SignUp = ({ navigation }) => {
           label="Password"
           secureTextEntry={!showPass}
           autoCompleteType="password"
+          value={password}
           containerStyle={{
             marginTop: SIZES.radius,
           }}

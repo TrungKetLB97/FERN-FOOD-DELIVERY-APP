@@ -7,7 +7,7 @@ import LinearGradient from 'react-native-linear-gradient';
 
 export default function DeliveryStatus({navigation}) {
 
-  const [currentStep, setCurrentStep] = React.useState(3);
+  const [currentStep, setCurrentStep] = React.useState(2);
 
 
 

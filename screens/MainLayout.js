@@ -1,4 +1,4 @@
-import React from 'react'
+import React from "react";
 import {
   View,
   Text,
@@ -12,27 +12,14 @@ import LinearGradient from "react-native-linear-gradient";
 import { connect } from "react-redux";
 import { setSelectedTab } from "../stores/tab/tabActions";
 
-import { 
-  Home, 
-  Search, 
-  CartTab, 
-  Favourite, 
-  Notification 
-} from "../screens";
-import {
-  COLORS,
-  SIZES,
-  FONTS,
-  icons,
-  constant,
-  dummyData,
-} from "../constants";
+import { Home, Search, CartTab, Favourite, Notification } from "../screens";
+import { COLORS, SIZES, FONTS, icons, constant, dummyData } from "../constants";
 import { Header } from "../components";
 
 import Animated, {
-    useSharedValue,
-    useAnimatedStyle,
-    withTiming,
+  useSharedValue,
+  useAnimatedStyle,
+  withTiming,
 } from "react-native-reanimated";
 
 const TabButton = ({
@@ -98,10 +85,9 @@ const MainLayout = ({
   drawerAnimationStyle,
   navigation,
   selectedTab,
-  setSelectedTab, 
+  setSelectedTab,
 }) => {
-
-  const flatListRef = React.useRef()
+  const flatListRef = React.useRef();
   // reanimated shared value
   // home
   const homeTabFlex = useSharedValue(1);
@@ -185,8 +171,8 @@ const MainLayout = ({
     if (selectedTab == constant.screens.home) {
       flatListRef?.current?.scrollToIndex({
         index: 0,
-        animated: false
-      })
+        animated: false,
+      });
 
       homeTabFlex.value = withTiming(4, { duration: 500 });
       homeTabColor.value = withTiming(COLORS.primary, { duration: 500 });
@@ -254,7 +240,7 @@ const MainLayout = ({
         flex: 1,
         backgroundColor: "white",
         marginTop: 50,
-        ...drawerAnimationStyle
+        ...drawerAnimationStyle,
       }}
     >
       {/* header */}
@@ -301,14 +287,14 @@ const MainLayout = ({
           </TouchableOpacity>
         }
       />
-      
+
       {/* Content */}
       <View
         style={{
           flex: 1,
         }}
       >
-        <FlatList 
+        <FlatList
           ref={flatListRef}
           horizontal
           scrollEnabled={false}
@@ -317,8 +303,8 @@ const MainLayout = ({
           snapToInterval={SIZES.width}
           showsHorizontalScrollIndicator={false}
           data={constant.bottom_tabs}
-          keyExtractor={item => `${item.id}`}
-          renderItem={({item, index}) => {
+          keyExtractor={(item) => `${item.id}`}
+          renderItem={({ item, index }) => {
             return (
               <View
                 style={{
@@ -326,11 +312,19 @@ const MainLayout = ({
                   width: SIZES.width,
                 }}
               >
-                {item.label == constant.screens.home && <Home navigation={navigation} />}
+                {item.label == constant.screens.home && (
+                  <Home navigation={navigation} />
+                )}
                 {item.label == constant.screens.search && <Search />}
-                {item.label == constant.screens.cart && <CartTab navigation={navigation}/>}
-                {item.label == constant.screens.favourite && <Favourite navigation={navigation}/>}
-                {item.label == constant.screens.notification && <Notification navigation={navigation}/>}
+                {item.label == constant.screens.cart && (
+                  <CartTab navigation={navigation} />
+                )}
+                {item.label == constant.screens.favourite && (
+                  <Favourite navigation={navigation} />
+                )}
+                {item.label == constant.screens.notification && (
+                  <Notification navigation={navigation} />
+                )}
               </View>
             );
           }}
@@ -414,8 +408,8 @@ const MainLayout = ({
         </View>
       </View>
     </Animated.View>
-  )
-}
+  );
+};
 function mapStateToProps(state) {
   return {
     selectedTab: state.tabReducer.selectedTab,

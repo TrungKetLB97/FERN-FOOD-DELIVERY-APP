@@ -33,6 +33,7 @@ const ForgotPassword = ({navigation}) => {
           label="Email"
           keyboardType="email-address"
           autoCompleteType="email"
+          value={email}
           onChange={(value) => {
             // validate email
             utils.validateEmail(value, setEmailError);
